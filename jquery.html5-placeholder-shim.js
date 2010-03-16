@@ -22,9 +22,9 @@
 			{
 				var op = $(target).offsetParent().offset();
 				var ot = $(target).offset();
-				//console.log(op,ot);
+
 				return {
-					top: ot.top - op.top + ($(target).outerHeight() - $(target).height()) /2 + $(target).height()*.07,
+					top: ot.top - op.top + ($(target).outerHeight() - $(target).height()) /2,
 					left: ot.left - op.left + config.lr_padding,
 					width: $(target).width() - config.lr_padding
 				};
@@ -32,20 +32,21 @@
 			return this.each(function() {
 				if( $(this).data('placeholder') )
 					return true;
-				
+
 				var ol = $('<label />')
 					.text($(this).attr('placeholder'))
 					.addClass(config.cls)
-					.css({ 
-						position:'absolute', 
+					.css({
+						position:'absolute',
 						display: 'inline',
 						float:'none',
-						overflow:'hidden', 
+						overflow:'hidden',
 						whiteSpace:'nowrap',
 						textAlign: 'left',
-						color: config.color, 
+						color: config.color,
 						cursor: 'text',
-						fontSize: parseInt($(this).height() * .85)
+						fontSize: $(this).css('font-size'),
+						lineHeight: $(this).css('height')
 					})
 					.css(calcPositionCss(this))
 					.data('target',$(this))
@@ -66,7 +67,7 @@
 						ol.css(calcPositionCss($target))
 					});
 			});
-		} 
+		}
 	});
-	
+
 })(jQuery);
