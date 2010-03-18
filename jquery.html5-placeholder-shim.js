@@ -30,8 +30,11 @@
 				};
 			}
 			return this.each(function() {
-				if( $(this).data('placeholder') )
+				if( $(this).data('placeholder') ) {
+					var $ol = $(this).data('placeholder');
+					$ol.css(calcPositionCss($(this)));
 					return true;
+				}
 
 				var ol = $('<label />')
 					.text($(this).attr('placeholder'))
@@ -49,11 +52,12 @@
 						lineHeight: $(this).css('height')
 					})
 					.css(calcPositionCss(this))
+					.attr('for', this.id)
 					.data('target',$(this))
 					.click(function(){
 						$(this).data('target').focus()
 					})
-					.insertAfter(this);
+					.insertBefore(this);
 				$(this)
 					.data('placeholder',ol)
 					.focus(function(){
