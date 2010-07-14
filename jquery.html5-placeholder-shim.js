@@ -74,3 +74,9 @@
 	});
 
 })(jQuery);
+
+$(document).ready(function() {
+  if ($.placeholder) {
+    $.placeholder.shim();
+  }
+});
