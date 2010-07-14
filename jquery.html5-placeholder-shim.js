@@ -48,8 +48,7 @@
 						textAlign: 'left',
 						color: config.color,
 						cursor: 'text',
-						fontSize: $(this).css('font-size'),
-						lineHeight: $(this).css('height')
+						fontSize: $(this).css('font-size')
 					})
 					.css(calcPositionCss(this))
 					.attr('for', this.id)
