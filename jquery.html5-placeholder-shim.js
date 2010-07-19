@@ -9,10 +9,11 @@
 				var config = {
 					color: '#888',
 					cls: '',
-					lr_padding:4
+					lr_padding:4,
+					selector: 'input[placeholder], textarea[placeholder]'
 				};
 				$.extend(config,opts);
-				!this.browser_supported() && $('input[placeholder]')._placeholder_shim(config);
+				!this.browser_supported() && $(config.selector)._placeholder_shim(config);
 			}
 	}});
 
