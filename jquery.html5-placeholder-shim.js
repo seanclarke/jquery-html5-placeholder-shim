@@ -81,7 +81,7 @@
 
 })(jQuery);
 
-$(document).ready(function() {
+$(document).add(window).bind('ready load', function() {
   if ($.placeholder) {
     $.placeholder.shim();
   }
