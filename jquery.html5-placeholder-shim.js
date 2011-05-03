@@ -8,7 +8,7 @@
 			shim: function(opts) {
 				var config = {
 					color: '#888',
-					cls: '',
+					cls: 'placeholder',
 					lr_padding:4,
 					selector: 'input[placeholder], textarea[placeholder]'
 				};
@@ -54,7 +54,13 @@
 						textAlign: 'left',
 						color: config.color,
 						cursor: 'text',
-						fontSize: $(this).css('font-size')
+						paddingTop: $(this).css('padding-top'),
+						paddingLeft: $(this).css('padding-left'),
+						fontSize: $(this).css('font-size'),
+						fontFamily: $(this).css('font-family'),
+						fontStyle: $(this).css('font-style'),
+						fontWeight: $(this).css('font-weight'),
+						textTransform: $(this).css('text-transform')
 					}, possible_line_height))
 					.css(calcPositionCss(this))
 					.attr('for', this.id)
