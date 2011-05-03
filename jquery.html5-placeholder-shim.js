@@ -8,7 +8,7 @@
 			shim: function(opts) {
 				var config = {
 					color: '#888',
-					cls: '',
+					cls: 'placeholder',
 					lr_padding:4,
 					selector: 'input[placeholder], textarea[placeholder]'
 				};
