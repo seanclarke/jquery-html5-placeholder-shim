@@ -1,4 +1,5 @@
 (function($) {
+  // @todo Document this.
   $.extend($,{ placeholder: {
       browser_supported: function() {
         return this._supported !== undefined ?
