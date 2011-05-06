@@ -60,7 +60,8 @@
 						fontFamily: $(this).css('font-family'),
 						fontStyle: $(this).css('font-style'),
 						fontWeight: $(this).css('font-weight'),
-						textTransform: $(this).css('text-transform')
+						textTransform: $(this).css('text-transform'),
+						zIndex: 99
 					}, possible_line_height))
 					.css(calcPositionCss(this))
 					.attr('for', this.id)
