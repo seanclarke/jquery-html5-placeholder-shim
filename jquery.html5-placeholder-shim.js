@@ -38,20 +38,15 @@
           return true;
         }
 
-        var possible_line_height = {};
-        if( $(this).css('height') != 'auto') {
-          possible_line_height = { lineHeight: $(this).css('height') };
-        }
-
         var ol = $('<label />')
           .text($(this).attr('placeholder'))
           .addClass(config.cls)
-          .css($.extend({
+          .css({
             position:'absolute',
             display: 'inline',
             float:'none',
             overflow:'hidden',
-            whiteSpace:'nowrap',
+            //whiteSpace:'nowrap',
             textAlign: 'left',
             color: config.color,
             cursor: 'text',
@@ -63,7 +58,7 @@
             fontWeight: $(this).css('font-weight'),
             textTransform: $(this).css('text-transform'),
             zIndex: 99
-          }, possible_line_height))
+          })
           .css(calcPositionCss(this))
           .attr('for', this.id)
           .data('target',$(this))
