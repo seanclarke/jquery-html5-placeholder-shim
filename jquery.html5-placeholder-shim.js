@@ -32,51 +32,52 @@
         };
       }
       return this.each(function() {
-        if( $(this).data('placeholder') ) {
-          var $ol = $(this).data('placeholder');
-          $ol.css(calcPositionCss($(this)));
+        var $this = $(this);
+        
+        if( $this.data('placeholder') ) {
+          var $ol = $this.data('placeholder');
+          $ol.css(calcPositionCss($this));
           return true;
         }
 
         var possible_line_height = {};
-        if( $(this).css('height') != 'auto') {
-          possible_line_height = { lineHeight: $(this).css('height') };
+        if( !$this.is('textarea') && $this.css('height') != 'auto') {
+          possible_line_height = { lineHeight: $this.css('height'), whiteSpace: 'nowrap' };
         }
 
         var ol = $('<label />')
-          .text($(this).attr('placeholder'))
+          .text($this.attr('placeholder'))
           .addClass(config.cls)
           .css($.extend({
             position:'absolute',
             display: 'inline',
             float:'none',
             overflow:'hidden',
-            whiteSpace:'nowrap',
             textAlign: 'left',
             color: config.color,
             cursor: 'text',
-            paddingTop: $(this).css('padding-top'),
-            paddingLeft: $(this).css('padding-left'),
-            fontSize: $(this).css('font-size'),
-            fontFamily: $(this).css('font-family'),
-            fontStyle: $(this).css('font-style'),
-            fontWeight: $(this).css('font-weight'),
-            textTransform: $(this).css('text-transform'),
+            paddingTop: $this.css('padding-top'),
+            paddingLeft: $this.css('padding-left'),
+            fontSize: $this.css('font-size'),
+            fontFamily: $this.css('font-family'),
+            fontStyle: $this.css('font-style'),
+            fontWeight: $this.css('font-weight'),
+            textTransform: $this.css('text-transform'),
             zIndex: 99
           }, possible_line_height))
           .css(calcPositionCss(this))
           .attr('for', this.id)
-          .data('target',$(this))
+          .data('target',$this)
           .click(function(){
-            $(this).data('target').focus()
+            $this.data('target').focus()
           })
           .insertBefore(this);
-        $(this)
+        $this
           .data('placeholder',ol)
           .focus(function(){
             ol.hide();
           }).blur(function() {
-            ol[$(this).val().length ? 'hide' : 'show']();
+            ol[$this.val().length ? 'hide' : 'show']();
           }).triggerHandler('blur');
         $(window)
           .resize(function() {
