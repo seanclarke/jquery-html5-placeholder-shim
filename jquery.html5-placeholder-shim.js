@@ -69,7 +69,7 @@
           .attr('for', this.id)
           .data('target',$this)
           .click(function(){
-            $this.data('target').focus()
+            $(this).data('target').focus()
           })
           .insertBefore(this);
         $this
